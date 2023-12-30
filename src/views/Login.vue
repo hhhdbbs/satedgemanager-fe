@@ -27,12 +27,12 @@
             </el-form-item>
             <div style="display: flex; justify-content:center; align-items: center;">
                 <el-button style="margin-top: 30px; width: 350px;" type="primary" @click="login(user)">登录</el-button>
-            </div> 
+            </div>
         </el-form>
       </el-card>
     </div>
   </template>
-  
+
   <script>
   export default {
     name: 'Home',
@@ -53,20 +53,32 @@
             this.$parent.ifLogin = false;
         },
         login(user){
-          this.$http.post('/user/login',user).then(res =>{
-            if(res.data.status == 0){
-              this.$message.success('登录成功')
-              sessionStorage.setItem('name', res.data.data.token)
-              sessionStorage.setItem('role', res.data.data.role)
-              // this.resetSetItem('name', 'admin');  
-                this.$parent.ifLogin = true
-                this.$router.push({
-                    name:'home'
-                })
-            }else{
-                this.$message.error('用户名或密码错误')
-            }
-          })
+          // this.$http.post('/user/login',user).then(res =>{
+          //   if(res.data.status == 0){
+          //     this.$message.success('登录成功')
+          //     sessionStorage.setItem('name', res.data.data.token)
+          //     sessionStorage.setItem('role', res.data.data.role)
+          //     // this.resetSetItem('name', 'admin');
+          //       this.$parent.ifLogin = true
+          //       this.$router.push({
+          //           name:'home'
+          //       })
+          //   }else{
+          //       this.$message.error('用户名或密码错误')
+          //   }
+          // })
+          // Directly setting the login success message
+          this.$message.success('登录成功');
+
+          // Setting default values for token and role in sessionStorage
+          sessionStorage.setItem('name', 'default_token'); // Set a default token
+          sessionStorage.setItem('role', 'default_role'); // Set a default role
+
+          // Update parent component state and redirect to the home page
+          this.$parent.ifLogin = true;
+          this.$router.push({
+            name: 'home'
+          });
         }
     },
     mounted() {
@@ -74,7 +86,7 @@
     }
   }
   </script>
-  
+
   <!-- Add "scoped" attribute to limit CSS to this component only -->
   <style scoped>
   .background{
