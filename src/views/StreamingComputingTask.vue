@@ -25,6 +25,51 @@
                 </div>
                 </el-card>
             </el-card>
+          <el-card class="node-list" style="display: inline-block;">
+            <div class="wrapper">
+              <!-- <el-button type="primary" icon="el-icon-circle-plus-outline" @click="toAddEdgeNode">添加节点</el-button> -->
+              <span style="top: -10px; font-size: large;">流式计算任务列表</span>
+              <el-button type="primary" icon="el-icon-refresh-right" @click="ReloadTask">重新执行</el-button>
+            </div>
+            <div class="table">
+              <el-table :data="displayedData" stripe style="width: 100%">
+                <el-table-column prop="name" label="节点名称" >
+                  <!-- <template slot-scope="scope">
+                      <el-button size="mini" type="text" @click="gotoNode(scope.row.name)">{{ scope.row.name }}</el-button>
+                  </template> -->
+                </el-table-column>
+                <el-table-column prop="status" label="节点状态" width="350px">
+                  <template slot-scope="scope">
+                    <el-tag style="size:smaller"
+                            :type="{
+                                    'Running':'primary',
+                                    'Loading':'warning',
+                                    'Writing':'info',
+                                    'Finished':'success'
+                                }[scope.row.status]">{{ scope.row.status }}</el-tag>
+                  </template>
+                </el-table-column>
+
+                <el-table-column prop="handlingcapacity" label="吞吐量" width="300px">
+                  <template slot-scope="scope">
+                    {{ scope.row.load }} Mbps
+                  </template>
+                </el-table-column>
+
+              </el-table>
+            </div>
+            <div class="block">
+              <el-pagination
+                @size-change="handleSizeChange"
+                @current-change="handleCurrentChange"
+                :current-page="currentPage1"
+                :page-sizes="[5, 10, 15, 20]"
+                :page-size="pageSize"
+                layout="total, sizes, prev, pager, next, jumper"
+                :total="datasize">
+              </el-pagination>
+            </div>
+          </el-card>
             <el-card class="node-list" style="display: inline-block;">
                 <div class="wrapper">
                     <!-- <el-button type="primary" icon="el-icon-circle-plus-outline" @click="toAddEdgeNode">添加节点</el-button> -->
@@ -49,13 +94,13 @@
                                 }[scope.row.status]">{{ scope.row.status }}</el-tag>
                             </template>
                         </el-table-column>
-                        
+
                         <el-table-column prop="handlingcapacity" label="吞吐量" width="300px">
                             <template slot-scope="scope">
                                 {{ scope.row.load }} Mbps
                             </template>
                         </el-table-column>
-                        
+
                     </el-table>
                 </div>
                 <div class="block">
@@ -132,7 +177,7 @@ export default {
                 console.log(res)
             })
         },
-        
+
         drawChart_handling_capacity_total(){
             let newPromise = new Promise((resolve) => {
                 resolve()

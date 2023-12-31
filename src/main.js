@@ -5,6 +5,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import App from './App'
 import router from './router'
+import vuetify from './plugins/vuetify'
 import * as echarts from 'echarts';
 import Plugin from 'v-fit-columns';
 import "@/assets/css/global.css"
@@ -22,6 +23,7 @@ Vue.use(Plugin);
 /* eslint-disable no-new */
 
 new Vue({
+  vuetify,
   el: '#app',
   router,
   components: { App },
@@ -37,9 +39,9 @@ Vue.prototype.resetSetItem = function (key, newVal) {
         var newStorageEvent = document.createEvent('StorageEvent');
         const storage = {
             setItem: function (k, val) {
-                sessionStorage.setItem(k, val); 
+                sessionStorage.setItem(k, val);
                 // 初始化创建的事件
-                newStorageEvent.initStorageEvent('setItem', false, false, k, null, val, null, null); 
+                newStorageEvent.initStorageEvent('setItem', false, false, k, null, val, null, null);
                 // 派发对象
                 window.dispatchEvent(newStorageEvent)
                 console.log('派发')

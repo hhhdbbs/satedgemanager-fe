@@ -1,16 +1,16 @@
 <template>
     <div style="width: 200px; height: 100%;">
-      
+
         <el-menu default-active="2" class="el-menu-vertical-demo" style="width: 175px; height: 100%; position:fixed;">
           <el-scrollbar style="height: 100%;">
           <div style="height: 50px; padding: 14px;padding-left: 20px; font-weight: bold; font-size:medium;color:dodgerblue;">
-            星载边缘节点资源虚拟化管理系统
+            星载边缘节点在轨计算管理系统
           </div>
-        
+
           <el-menu-item index="overview" @click="gotoHome" style="margin-top: 15px;">
             <span slot="title">概览</span>
           </el-menu-item>
-        
+
           <el-submenu index="resource">
             <span slot="title">资源管理</span>
             <el-menu-item index="edge-node" @click="gotoEdgeNode">节点</el-menu-item>
@@ -31,7 +31,7 @@
             <el-menu-item index="StreamingTask-management" @click="gotoStreamingTask">流式计算任务</el-menu-item>
           </el-submenu>
 
-          
+
 
           <el-menu-item index="image"  @click="gotoImageManagement">
             <span slot="title">镜像管理</span>
@@ -56,7 +56,7 @@ import 'perfect-scrollbar/css/perfect-scrollbar.css'
 export default {
     data() {
         return{
-          
+
         }
     },
     methods:{
@@ -120,7 +120,7 @@ export default {
             name:'streamingtask'
           })
         }
-        
+
     },
     mounted() {
        const container = document.querySelector('.scroll-container')

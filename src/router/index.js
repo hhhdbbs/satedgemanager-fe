@@ -25,16 +25,12 @@ import AddUser from '@/views/AddUser.vue'
 import UpdatePod from '@/views/UpdatePod.vue'
 import UpdateDeployment from '@/views/UpdateDeployment.vue'
 import StreamingComputingTask from '@/views/StreamingComputingTask.vue'
+import AppInfo from '@/views/AppInfo.vue'
 
 Vue.use(Router)
 
 const router = new Router({
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'HelloWorld',
-    //   component: HelloWorld
-    // },
     {
       path:'/',
       redirect: '/login'
@@ -169,23 +165,19 @@ const router = new Router({
       path:'/streamingtask',
       name:'streamingtask',
       component: StreamingComputingTask
+    },
+    {
+      path: '/appinfo',
+      name: 'AppInfo',
+      component: AppInfo
     }
   ]
 })
 
 
-router.beforeEach((to, from, next) => {
-  // 判断用户是否登录
-  var isLoggedIn = ''/* 在这里判断用户是否登录，比如从 Vuex 状态中获取登录状态 */;
-  isLoggedIn = sessionStorage.getItem('name')
-  if (to.name !== 'login' && !isLoggedIn) {
-    // 如果不是登录页面且用户未登录，则重定向到登录页面
-    next('/login');
-  } else {
-    // this.$parent.ifLogin = true
-    next(); // 继续导航
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   next();
+// })
 
 export default router;
 
