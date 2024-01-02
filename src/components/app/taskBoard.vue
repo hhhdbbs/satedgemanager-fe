@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-card v-for="(item, index) in taskList" :key="item.taskID">
-      <v-card-text class="d-flex">
+      <v-card-text style="display:flex">
         <h2 class="mr-auto">{{ item.taskName }}</h2>
         <v-btn
           text

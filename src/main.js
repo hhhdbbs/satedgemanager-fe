@@ -9,17 +9,19 @@ import vuetify from './plugins/vuetify'
 import * as echarts from 'echarts';
 import Plugin from 'v-fit-columns';
 import "@/assets/css/global.css"
+import Vuetify from 'vuetify'
+Vue.use(Vuetify)
 import axios from 'axios'
-
 Vue.config.productionTip = false
 Vue.prototype.$echarts = echarts;
-
-axios.defaults.baseURL='http://k3s-sat.act.buaa.edu.cn/api'
+import './assets/iconfont/iconfont.js'
+axios.defaults.baseURL = 'http://k3s-sat.act.buaa.edu.cn/api'
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
 Vue.prototype.$http = axios
 
 Vue.use(ElementUI);
 Vue.use(Plugin);
-
+   
 /* eslint-disable no-new */
 
 new Vue({

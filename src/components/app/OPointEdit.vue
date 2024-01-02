@@ -3,8 +3,7 @@
     <div id="o_point_edit_body">
       <div
         id="o_point_edit_circle"
-        style="width:100%;"
-        class="d-flex justify-center"
+        style="width:100%;justify-content:center;display:flex"
       >
         <div
           v-for="(item, i) in opInformation.input_num"
@@ -22,8 +21,7 @@
       </div>
       <div
         id="o_point_edit_circle"
-        style="width:100%;top:100%;"
-        class="d-flex justify-center"
+        style="width:100%;top:100%;justify-content:center;display:flex"
       >
         <div
           v-for="(item, i) in opInformation.output_num"
@@ -133,4 +131,10 @@ export default {
 .selected {
   background: rgba(227, 244, 255, 0.9) !important;
 }
+.icon {
+       width: 1em; height: 1em;
+       vertical-align: -0.15em;
+       fill: currentColor;
+       overflow: hidden;
+    }
 </style>
